@@ -14,6 +14,13 @@ import * as MagicMove from 'react-native-magic-move';
 const { width } = Dimensions.get("window");
 
 class StoreDetails extends React.PureComponent {
+  static navigationOptions = ({ navigation }) => {
+    const { title } = navigation.state.params.store;
+    return {
+      title,
+    };
+  };
+
   render() {
     const { store } = this.props.navigation.state.params;
     return (
@@ -26,7 +33,7 @@ class StoreDetails extends React.PureComponent {
           }}
           transition={MagicMove.Transition.morph}
           source={store.image}
-          resizeMode={'cover'}
+          resizeMode={'stretch'}
         />
         <View>
           <Text style={{ fontSize: 20, fontWeight: 'bold'}}>

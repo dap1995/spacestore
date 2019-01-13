@@ -35,6 +35,10 @@ export default class Stores extends React.PureComponent {
     }
   }
 
+  static navigationOptions = {
+    title: 'Home',
+  };
+
   moveTo = _.debounce((index) => {
     if (this.index !== index) {
       this.index = index;
