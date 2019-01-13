@@ -5,12 +5,11 @@ import {
   View,
   Alert,
   Animated,
-  Image,
   Dimensions,
   TouchableWithoutFeedback,
 } from "react-native";
 import _ from 'lodash';
-import MapView from "react-native-maps";
+import MapView, { AnimatedRegion } from "react-native-maps";
 import * as MagicMove from 'react-native-magic-move';
 import { markers } from '../mocks'
 
@@ -52,6 +51,19 @@ export default class Stores extends React.PureComponent {
   }, 20);
 
   componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      position => this.map.animateToCoordinate({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      }),
+      error => Alert.alert(error.message),
+      {
+        enableHighAccuracy: true,
+        timeout: 20000,
+        maximumAge: 1000,
+      },
+    );
+
     this.animation.addListener(({ value }) => {
       let index = Math.floor(value / (CARD_WIDTH + CARD_LEFT_RIGHT_MARGIN) + 0.3); // animate 30% away from landing on the next item
       if (index >= this.state.markers.length) {
@@ -88,8 +100,10 @@ export default class Stores extends React.PureComponent {
       <MagicMove.Scene style={styles.container}>
         <MapView
           ref={map => this.map = map}
-          initialRegion={this.state.region}
           style={styles.container}
+          initialRegion={this.state.region}
+          showsUserLocation
+          showsMyLocationButton
         >
           { this.state.markers.map((marker, index) => {
             const opacityStyle = {
