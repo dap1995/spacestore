@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   StyleSheet,
   Text,
@@ -11,13 +11,7 @@ import {
 } from "react-native";
 import _ from 'lodash';
 import MapView from "react-native-maps";
-
-const Images = [
-  { uri: "https://i.imgur.com/sNam9iJ.jpg" },
-  { uri: "https://i.imgur.com/N7rlQYt.jpg" },
-  { uri: "https://i.imgur.com/UDrH0wm.jpg" },
-  { uri: "https://i.imgur.com/Ka8kNST.jpg" }
-]
+import { markers } from '../mocks'
 
 const { width, height } = Dimensions.get("window");
 
@@ -25,161 +19,20 @@ const CARD_HEIGHT = height / 4;
 const CARD_WIDTH = CARD_HEIGHT - 50;
 const CARD_LEFT_RIGHT_MARGIN = 20;
 
-export default class screens extends Component {
+export default class Stores extends React.PureComponent {
   constructor(props) {
     super(props);
     this.index = 0;
     this.animation = new Animated.Value(0);
     this.state = {
-      markers: [
-        {
-          coordinate: {
-            latitude: 45.524548,
-            longitude: -122.6749817,
-          },
-          title: "Loja Daniel",
-          description: "Encontre aqui diversos produtos de vestuario",
-          image: Images[0],
-          isOnline: false,
-        },
-        {
-          coordinate: {
-            latitude: 45.524698,
-            longitude: -122.6655507,
-          },
-          title: "Loja do Junior",
-          description: "Venha conhecer nossas lindas peças hitech",
-          image: Images[1],
-          isOnline: true,
-        },
-        {
-          coordinate: {
-            latitude: 45.5230786,
-            longitude: -122.6701034,
-          },
-          title: "Loja do Luciano",
-          description: "Encontre aqui lindas peças de roupas das mais variadas cores",
-          image: Images[2],
-          isOnline: false,
-        },
-        {
-          coordinate: {
-            latitude: 45.521016,
-            longitude: -122.6561917,
-          },
-          title: "Loja da Karla",
-          description: "Vista-se bem, Sinta-se bem",
-          image: Images[3],
-          isOnline: true,
-        },
-        {
-          coordinate: {
-            latitude: 45.521026,
-            longitude: -122.6561117,
-          },
-          title: "Loja de Teste",
-          description: "Teste",
-          image: Images[Math.floor(Math.random() * 4)],
-          isOnline: true,
-        },
-        {
-          coordinate: {
-            latitude: 45.821016,
-            longitude: -122.1561917,
-          },
-          title: "Loja de Teste",
-          description: "Teste",
-          image: Images[Math.floor(Math.random() * 4)],
-          isOnline: true,
-        },
-        {
-          coordinate: {
-            latitude: 45.521016,
-            longitude: -122.6561917,
-          },
-          title: "Loja de Teste",
-          description: "Teste",
-          image: Images[Math.floor(Math.random() * 4)],
-          isOnline: true,
-        },
-        {
-          coordinate: {
-            latitude: 45.521216,
-            longitude: -122.6591917,
-          },
-          title: "Loja de Teste",
-          description: "Teste",
-          image: Images[Math.floor(Math.random() * 4)],
-          isOnline: true,
-        },
-        {
-          coordinate: {
-            latitude: 45.525016,
-            longitude: -122.6661917,
-          },
-          title: "Loja de Teste",
-          description: "Teste",
-          image: Images[Math.floor(Math.random() * 4)],
-          isOnline: true,
-        },
-        {
-          coordinate: {
-            latitude: 45.521116,
-            longitude: -122.6569917,
-          },
-          title: "Loja de Teste",
-          description: "Teste",
-          image: Images[Math.floor(Math.random() * 4)],
-          isOnline: true,
-        },
-        {
-          coordinate: {
-            latitude: 45.221016,
-            longitude: -123.6561917,
-          },
-          title: "Loja de Teste",
-          description: "Teste",
-          image: Images[Math.floor(Math.random() * 4)],
-          isOnline: true,
-        },
-        {
-          coordinate: {
-            latitude: 44.521016,
-            longitude: -122.9561917,
-          },
-          title: "Loja de Teste",
-          description: "Teste",
-          image: Images[Math.floor(Math.random() * 4)],
-          isOnline: true,
-        },
-        {
-          coordinate: {
-            latitude: 45.525016,
-            longitude: -122.6261917,
-          },
-          title: "Loja de Teste",
-          description: "Teste",
-          image: Images[Math.floor(Math.random() * 4)],
-          isOnline: true,
-        },
-        {
-          coordinate: {
-            latitude: 45.524016,
-            longitude: -122.6560917,
-          },
-          title: "Loja de Teste",
-          description: "Teste",
-          image: Images[Math.floor(Math.random() * 4)],
-          isOnline: true,
-        },
-      ],
+      markers,
       region: {
         latitude: 45.52220671242907,
         longitude: -122.6653281029795,
         latitudeDelta: 0.04864195044303443,
         longitudeDelta: 0.040142817690068,
       },
-    };
+    }
   }
 
   moveTo = _.debounce((index) => {
@@ -198,8 +51,6 @@ export default class screens extends Component {
   }, 20);
 
   componentDidMount() {
-    // We should detect when scrolling has stopped then animate
-    // We should just debounce the event listener here
     this.animation.addListener(({ value }) => {
       let index = Math.floor(value / (CARD_WIDTH + CARD_LEFT_RIGHT_MARGIN) + 0.3); // animate 30% away from landing on the next item
       if (index >= this.state.markers.length) {
@@ -360,20 +211,5 @@ const styles = StyleSheet.create({
   markerWrap: {
     alignItems: "center",
     justifyContent: "center",
-  },
-  marker: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    // backgroundColor: "rgba(130,4,150, 0.9)",
-  },
-  ring: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    backgroundColor: "rgba(130,4,150, 0.3)",
-    position: "absolute",
-    borderWidth: 1,
-    borderColor: "rgba(130,4,150, 0.5)",
   },
 });
