@@ -137,7 +137,7 @@ export default class Stores extends React.PureComponent {
             <TouchableWithoutFeedback
               key={index}
               onPress={() => {
-                if (this.index === index) Alert.alert('Abriu loja');
+                if (this.index === index) this.props.navigation.navigate('StoreDetails', { store: marker });
                 this.map.animateToCoordinate(marker.coordinate);
                 this.list.getNode().scrollTo({ x: (index * (CARD_WIDTH + CARD_LEFT_RIGHT_MARGIN)) });
               }}
