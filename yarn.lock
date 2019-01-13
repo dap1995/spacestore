@@ -4331,6 +4331,10 @@ react-native-gesture-handler@^1.0.0, react-native-gesture-handler@^1.0.12:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
+react-native-magic-move@0.4.0-rc2:
+  version "0.4.0-rc2"
+  resolved "https://registry.yarnpkg.com/react-native-magic-move/-/react-native-magic-move-0.4.0-rc2.tgz#0b7bf4651d1bcee599fd7d26a5ef043fc0235e77"
+
 react-native-maps@^0.22.1:
   version "0.22.1"
   resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.22.1.tgz#ce856e71970e872e596e6fa4773279cae2c4dcdd"
@@ -4413,6 +4417,10 @@ react-navigation-drawer@1.0.5:
   resolved "https://registry.yarnpkg.com/react-navigation-drawer/-/react-navigation-drawer-1.0.5.tgz#d8cc71bd1779186261f3c3754b11f29aa98bd4f5"
   dependencies:
     react-native-tab-view "^1.2.0"
+
+react-navigation-magic-move@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-navigation-magic-move/-/react-navigation-magic-move-0.4.0.tgz#6778c1361daca6ee4f62f2ae10abd4afc8369bb5"
 
 react-navigation-stack@1.0.6:
   version "1.0.6"

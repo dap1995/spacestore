@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import _ from 'lodash';
 import MapView from "react-native-maps";
+import * as MagicMove from 'react-native-magic-move';
 import { markers } from '../mocks'
 
 const { width, height } = Dimensions.get("window");
@@ -84,7 +85,7 @@ export default class Stores extends React.PureComponent {
       return { scale, opacity };
     });
     return (
-      <View style={styles.container}>
+      <MagicMove.Scene style={styles.container}>
         <MapView
           ref={map => this.map = map}
           initialRegion={this.state.region}
@@ -137,13 +138,15 @@ export default class Stores extends React.PureComponent {
             <TouchableWithoutFeedback
               key={index}
               onPress={() => {
-                if (this.index === index) this.props.navigation.navigate('StoreDetails', { store: marker });
+                if (this.index === index) this.props.navigation.navigate('StoreDetails', { store: { ...marker, index } });
                 this.map.animateToCoordinate(marker.coordinate);
                 this.list.getNode().scrollTo({ x: (index * (CARD_WIDTH + CARD_LEFT_RIGHT_MARGIN)) });
               }}
             >
             <Animated.View style={[styles.card, { opacity: interpolations[index].opacity }]}>
-              <Image
+              <MagicMove.Image
+                id={`image-${index}`}
+                transition={MagicMove.Transition.squashAndStretch}
                 source={marker.image}
                 style={styles.cardImage}
                 resizeMode="cover"
@@ -158,7 +161,7 @@ export default class Stores extends React.PureComponent {
             </TouchableWithoutFeedback>
           ))}
         </Animated.ScrollView>
-      </View>
+      </MagicMove.Scene>
     );
   }
 }

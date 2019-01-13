@@ -9,17 +9,22 @@ import {
   Dimensions,
   TouchableWithoutFeedback,
 } from "react-native";
+import * as MagicMove from 'react-native-magic-move';
+
+const { width } = Dimensions.get("window");
 
 class StoreDetails extends React.PureComponent {
   render() {
     const { store } = this.props.navigation.state.params;
     return (
-      <View style={{ flex: 1 }}>
-        <Image
+      <MagicMove.Scene style={{ flex: 1 }}>
+        <MagicMove.Image
+          id={`image-${store.index}`}
           style={{
-            width: 200,
+            width,
             height: 200,
           }}
+          transition={MagicMove.Transition.morph}
           source={store.image}
           resizeMode={'cover'}
         />
@@ -31,7 +36,7 @@ class StoreDetails extends React.PureComponent {
             {store.description}
           </Text>
         </View>
-      </View>
+      </MagicMove.Scene>
     );
   }
 }
