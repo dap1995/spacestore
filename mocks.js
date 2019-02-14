@@ -148,4 +148,99 @@ const markers = [
   },
 ];
 
+export const produtos = [
+  {
+    name: 'Camisa Manga curta',
+    colors: [
+      {
+        name: 'azul',
+        images: ['https://static.hering.com.br//sys_master/images/ha7/h42/9569155612702.jpg?name=H2GD-NPZEJ-D1'],
+        sizes: [
+          {
+            name: 'P',
+            price: 120.2,
+          },
+          {
+            name: 'M',
+            price: 120.2,
+          },
+          {
+            name: 'G',
+            price: 120.2,
+          },
+        ],
+      },
+      {
+        name: 'amarelo',
+        images: ['https://img.lojasrenner.com.br/item/547201877/medium/5.jpg'],
+        sizes: [
+          {
+            name: 'P',
+            price: 120.2,
+          },
+          {
+            name: 'M',
+            price: 120.2,
+          },
+          {
+            name: 'G',
+            price: 120.2,
+          },
+        ],
+      },
+      {
+        name: 'vermelho',
+        images: ['https://img.lojasrenner.com.br/item/546523170/small/5.jpg'],
+        sizes: [
+          {
+            name: 'P',
+            price: 120.2,
+          },
+          {
+            name: 'M',
+            price: 120.2,
+          },
+          {
+            name: 'G',
+            price: 120.2,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Camisa AAAAA',
+    colors: [
+      {
+        name: 'roxa',
+        images: ['https://cdn.shopify.com/s/files/1/0087/2405/4073/products/Camiseta_Roxa_-_MASC_394x.jpg?v=1529006290'],
+        sizes: [
+          {
+            name: 'P',
+            price: 110.5,
+          },
+          {
+            name: 'M',
+            price: 110.5,
+          },
+        ],
+      },
+      {
+        name: 'lilas',
+        images: ['https://dafitistatic-a.akamaihd.net/p/Tip-Top-Camiseta-Manga-Curta-Tip-Top-Lisa-Infantil-Roxa.-9987-5207032-1-zoom.jpg'],
+        sizes: [
+          {
+            name: 'P',
+            price: 125.90,
+          },
+          {
+            name: 'M',
+            price: 125.90,
+          },
+        ],
+      },
+    ],
+  }
+]
+
 export { markers };
