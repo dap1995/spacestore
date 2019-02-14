@@ -168,6 +168,7 @@ export default class Stores extends React.PureComponent {
                 source={marker.image}
                 style={styles.cardImage}
                 resizeMode="cover"
+                useNativeDriver={false}
               />
               <View style={styles.textContent}>
                 <Text numberOfLines={1} style={styles.cardtitle}>{marker.title}</Text>
