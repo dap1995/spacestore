@@ -18,8 +18,6 @@ import {
   Text,
 } from 'native-base';
 
-const logo = require('../logo.png');
-
 const sleep = (milliseconds) => {
   return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
@@ -42,10 +40,6 @@ class Login extends Component {
 
   static navigationOptions = {
     header: null,
-  }
-
-  componentDidMount() {
-    // this.showLogo();
   }
 
   async handleSubmit(email, password) {
@@ -94,7 +88,7 @@ class Login extends Component {
   }
 
   renderIndicator() {
-    return <ActivityIndicator color={'blue'} />;
+    return <ActivityIndicator color="blue" />;
   }
 
   render() {
