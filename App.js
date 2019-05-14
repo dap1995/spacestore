@@ -1,14 +1,18 @@
 
-import "react-navigation-magic-move";
 import React from 'react';
+import "react-navigation-magic-move";
 import * as MagicMove from 'react-native-magic-move';
 import { Root } from "native-base";
-import AppContainer from './modules/Router';
+import { ApolloProvider } from 'react-apollo';
+import AppContainer from './src/modules/Router';
+import client from './src/index';
 
 export default App = () => (
   <MagicMove.Provider>
-    <Root>
-      <AppContainer />
-    </Root>
+    <ApolloProvider client={client}>
+      <Root>
+        <AppContainer />
+      </Root>
+    </ApolloProvider>
   </MagicMove.Provider>
 );

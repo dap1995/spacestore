@@ -55,6 +55,7 @@
 		BC4D68C99076408CBE4DC5CF /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7500E39B654474690912E1B /* MaterialCommunityIcons.ttf */; };
 		C12A9CF45CD0433E9D7CA622 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A166A331816C4D4C931D4447 /* libRNGestureHandler.a */; };
 		E1DC9D91FF044A8CA6CA9F65 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C8CC3B3A204AE8B3745884 /* libRNVectorIcons.a */; };
+		EC76C48AD64B4A8E9C623A50 /* libRNMagicMove.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC51294CC3546E893EF063F /* libRNMagicMove.a */; };
 		EF89F67BC3004E33973353F6 /* libRNVectorIcons-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AED0F9C7F9E84476802602D1 /* libRNVectorIcons-tvOS.a */; };
 		F70C2291DA7545A596E01ED4 /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6DF2FFCAE6478AB2F6DDBA /* libAirMaps.a */; };
 /* End PBXBuildFile section */
@@ -319,6 +320,13 @@
 			remoteGlobalIDString = A39873CE1EA65EE60051E01A;
 			remoteInfo = "RNVectorIcons-tvOS";
 		};
+		3F46B553228B81FD00F36559 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 414AB82D903A4B36BA793ED3 /* RNMagicMove.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNMagicMove;
+		};
 		3FBDF00921E4093B00CA03D1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA0C0AD3C0464A05BCB00C12 /* AirMaps.xcodeproj */;
@@ -390,10 +398,12 @@
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3064C235E9374FDAB2BC004D /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		3C65A1DDC3CD4CDBABAAAB31 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		414AB82D903A4B36BA793ED3 /* RNMagicMove.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNMagicMove.xcodeproj; path = "../node_modules/react-native-magic-move/ios/RNMagicMove.xcodeproj"; sourceTree = "<group>"; };
 		50E42FB3B2B5431A973B0942 /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
 		53E3CB1A5D9846DA894DFB90 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
+		7FC51294CC3546E893EF063F /* libRNMagicMove.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNMagicMove.a; sourceTree = "<group>"; };
 		80E056D880E14BC5B0667135 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		88C8CC3B3A204AE8B3745884 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
@@ -442,6 +452,7 @@
 				F70C2291DA7545A596E01ED4 /* libAirMaps.a in Frameworks */,
 				C12A9CF45CD0433E9D7CA622 /* libRNGestureHandler.a in Frameworks */,
 				E1DC9D91FF044A8CA6CA9F65 /* libRNVectorIcons.a in Frameworks */,
+				EC76C48AD64B4A8E9C623A50 /* libRNMagicMove.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,8 +631,17 @@
 				A166A331816C4D4C931D4447 /* libRNGestureHandler.a */,
 				88C8CC3B3A204AE8B3745884 /* libRNVectorIcons.a */,
 				AED0F9C7F9E84476802602D1 /* libRNVectorIcons-tvOS.a */,
+				7FC51294CC3546E893EF063F /* libRNMagicMove.a */,
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		3F46B550228B81FD00F36559 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3F46B554228B81FD00F36559 /* libRNMagicMove.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		3FBDF00621E4093B00CA03D1 /* Products */ = {
@@ -690,6 +710,7 @@
 				AA0C0AD3C0464A05BCB00C12 /* AirMaps.xcodeproj */,
 				50E42FB3B2B5431A973B0942 /* RNGestureHandler.xcodeproj */,
 				DB8B61E161CA4B4F82328E4C /* RNVectorIcons.xcodeproj */,
+				414AB82D903A4B36BA793ED3 /* RNMagicMove.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -846,6 +867,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -908,6 +930,10 @@
 				{
 					ProductGroup = 3F32F74721EB59B10018F7F0 /* Products */;
 					ProjectRef = 50E42FB3B2B5431A973B0942 /* RNGestureHandler.xcodeproj */;
+				},
+				{
+					ProductGroup = 3F46B550228B81FD00F36559 /* Products */;
+					ProjectRef = 414AB82D903A4B36BA793ED3 /* RNMagicMove.xcodeproj */;
 				},
 				{
 					ProductGroup = 3F32F78121EBA8060018F7F0 /* Products */;
@@ -1170,6 +1196,13 @@
 			remoteRef = 3F32F78721EBA8070018F7F0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		3F46B554228B81FD00F36559 /* libRNMagicMove.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNMagicMove.a;
+			remoteRef = 3F46B553228B81FD00F36559 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		3FBDF00A21E4093B00CA03D1 /* libAirMaps.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1370,12 +1403,14 @@
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-magic-move/ios",
 				);
 				INFOPLIST_FILE = spacestoreTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1401,12 +1436,14 @@
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-magic-move/ios",
 				);
 				INFOPLIST_FILE = spacestoreTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1434,6 +1471,7 @@
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-magic-move/ios",
 				);
 				INFOPLIST_FILE = spacestore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1459,6 +1497,7 @@
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-magic-move/ios",
 				);
 				INFOPLIST_FILE = spacestore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1490,11 +1529,13 @@
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-magic-move/ios",
 				);
 				INFOPLIST_FILE = "spacestore-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1529,11 +1570,13 @@
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-magic-move/ios",
 				);
 				INFOPLIST_FILE = "spacestore-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1567,11 +1610,13 @@
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-magic-move/ios",
 				);
 				INFOPLIST_FILE = "spacestore-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1605,11 +1650,13 @@
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-magic-move/ios",
 				);
 				INFOPLIST_FILE = "spacestore-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",

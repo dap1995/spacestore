@@ -1,21 +1,15 @@
-import React from "react";
+import React from 'react';
 import {
-  StyleSheet,
   Text,
   View,
-  Alert,
-  Animated,
   Image,
   Dimensions,
-  TouchableWithoutFeedback,
-} from "react-native";
+} from 'react-native';
 import * as MagicMove from 'react-native-magic-move';
-import { FlatList } from "react-native-gesture-handler";
-import { produtos } from '../mocks';
+import { FlatList } from 'react-native-gesture-handler';
+import { produtos } from '../../mocks';
 
 const IMAGE_SIZE = 150;
-
-const { width } = Dimensions.get("window");
 
 class StoreDetails extends React.PureComponent {
   static navigationOptions = ({ navigation }) => {
@@ -73,6 +67,7 @@ class StoreDetails extends React.PureComponent {
 
   render() {
     const { store } = this.props.navigation.state.params;
+    console.log('Store: ', store);
     const products = this.generateProducts(produtos);
     return (
       <MagicMove.Scene style={{ flex: 1 }}>
@@ -88,7 +83,7 @@ class StoreDetails extends React.PureComponent {
             height: IMAGE_SIZE,
           }}
           transition={MagicMove.Transition.morph}
-          source={store.image}
+          source={{ uri: store.logo }}
           resizeMode={'cover'}
           useNativeDriver={false}
         />
