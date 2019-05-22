@@ -17,6 +17,9 @@ import {
   Input,
   Text,
 } from 'native-base';
+import { storeData } from '../utils/storage';
+import { withClient } from '../utils/graphql';
+import login from '../queries/login';
 
 const sleep = (milliseconds) => {
   return new Promise(resolve => setTimeout(resolve, milliseconds))
@@ -38,29 +41,35 @@ class Login extends Component {
     };
   }
 
-  static navigationOptions = {
-    header: null,
+  handleLogin = async () => {
+    const { client, navigation } = this.props;
+    const { email, password } = this.state;
+    this.setState({ isLoading: true });
+    this.startLoading();
+    try {
+      const { data: { login: { token } } } = await client.mutate(login({ email, password }));
+      await storeData('auth', token);
+      navigation.navigate('Home');
+    } catch(err) {
+      const { message = 'Não foi possível se autenticar' } = err;
+      Toast.show({ text: message, type: 'danger' });
+    } finally {
+      this.stopLoading();
+      this.setState({ isLoading: false });
+    }
   }
 
   async handleSubmit(email, password) {
-    this.setState({ isLoading: true });
-    this.startLoading();
     if (!email || !password) {
       Toast.show({
         text: 'Usuário/Senha não informado!',
         position: 'bottom',
         buttonText: 'Okay',
+        duration: 2000,
       });
-      this.setState({ isLoading: false });
-      this.stopLoading();
       return;
     }
-    sleep(2000).then(() => {
-      this.stopLoading();
-      this.setState({ isLoading: false });
-      this.finished();
-    });
-    
+    this.handleLogin();
   }
 
   register() {
@@ -81,14 +90,6 @@ class Login extends Component {
       duration: 150,
       easing: Easing.linear,
     }).start();
-  }
-
-  finished() {
-    this.props.navigation.navigate('Home');
-  }
-
-  renderIndicator() {
-    return <ActivityIndicator color="blue" />;
   }
 
   render() {
@@ -167,7 +168,7 @@ class Login extends Component {
                 ]}
               >
               { this.state.isLoading
-                ? this.renderIndicator()
+                ? <ActivityIndicator color="blue" />
                 : (
                   <Animated.Text style={{
                     fontWeight: 'bold',
@@ -213,4 +214,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withClient(Login);

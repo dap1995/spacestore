@@ -37,13 +37,15 @@ export default class Stores extends React.PureComponent {
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
-      position => {
+      ({ coords }) => {
+        const { latitude, longitude } = coords;
+        const DISTANCE_FROM_GROUND = 1000; // meters
+        const delta = this.calcDelta(latitude, DISTANCE_FROM_GROUND);
         this.setState({
           region: {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-            latitudeDelta: 0.04864195044303443,
-            longitudeDelta: 0.040142817690068
+            latitude,
+            longitude,
+            ...delta,
           },
         });
       },
@@ -56,6 +58,17 @@ export default class Stores extends React.PureComponent {
     );
   }
 
+  calcDelta(latitude, accuracy){
+    const oneDegreeOfLatitudeInMeters = 111.32 * 1000;
+    const latitudeDelta = accuracy / oneDegreeOfLatitudeInMeters;
+    const longitudeDelta = accuracy / (oneDegreeOfLatitudeInMeters * Math.cos(latitude * (Math.PI / 180)));
+    return {
+      latitudeDelta,
+      longitudeDelta,
+      accuracy,
+    };
+  }
+
   render() {
     const { navigation } = this.props;
     const { region } = this.state;
@@ -65,14 +78,15 @@ export default class Stores extends React.PureComponent {
           {
             ({ data, loading, error }) => {
               if (error) return <Text>ERROR: {error.message}</Text>;
+              const { storesByDistance = [] } = data;
               return (
                 <>
-                <StoresMap
-                  region={region}
-                  markers={data.stores}
-                  navigation={navigation}
-                />
-                <Loading isEnabled={loading} />
+                  <StoresMap
+                    region={region}
+                    markers={storesByDistance}
+                    navigation={navigation}
+                  />
+                  <Loading isEnabled={loading} />
                 </>
               );
             }

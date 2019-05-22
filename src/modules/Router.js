@@ -6,6 +6,9 @@ import StoreDetails from '../scenes/StoreDetails';
 const AppNavigator = createStackNavigator({
   Login: {
     screen: Login,
+    navigationOptions: {
+      header: null,
+    },
   },
   Home: {
     screen: Stores,

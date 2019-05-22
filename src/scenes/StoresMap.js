@@ -5,11 +5,13 @@ import {
   View,
   Animated,
   Dimensions,
+  Platform,
   TouchableWithoutFeedback,
 } from "react-native";
 import _ from 'lodash';
 import MapView, { AnimatedRegion } from "react-native-maps";
 import * as MagicMove from 'react-native-magic-move';
+import { imageNotFound } from '../styles/theme';
 
 const { width, height } = Dimensions.get("window");
 
@@ -18,27 +20,25 @@ const CARD_WIDTH = CARD_HEIGHT - 50;
 const CARD_LEFT_RIGHT_MARGIN = 20;
 
 export default class StoresMap extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.index = 0;
-    this.animation = new Animated.Value(0);
-  }
-
-  map;
-
   static navigationOptions = {
     title: 'Home',
   };
 
+  state = {
+    isReady: false,
+  }
+
+  index = 0;
+  animation = new Animated.Value(0);
+  map;
+
   moveTo = _.debounce((index) => {
     if (this.index !== index) {
       this.index = index;
-      const { address } = this.props.markers[index];
-      this.map.animateToCoordinate(
+      const { coordinate } = this.props.markers[index];
+      this.map.animateCamera(
         {
-          ...address,
-          latitudeDelta: this.props.region.latitudeDelta,
-          longitudeDelta: this.props.region.longitudeDelta,
+          center: coordinate,
         },
         350,
       );
@@ -46,10 +46,6 @@ export default class StoresMap extends React.PureComponent {
   }, 20);
 
   componentDidMount() {
-    const { region } = this.props;
-    this.map.animateToCoordinate({
-      ...region,
-    });
     this.animation.addListener(({ value }) => {
       let index = Math.floor(value / (CARD_WIDTH + CARD_LEFT_RIGHT_MARGIN) + 0.3); // animate 30% away from landing on the next item
       if (index >= this.props.markers.length) {
@@ -62,12 +58,25 @@ export default class StoresMap extends React.PureComponent {
     });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { region } = this.props;
+    const { isReady } = this.state;
+    if (
+      isReady && (
+        prevProps.region.latitude !== region.latitude
+        || prevProps.region.longitude !== region.longitude
+      )
+    ) {
+      this.map.animateToRegion(region);
+    }
+  }
+
   render() {
     const {
       markers = [],
       region,
     } = this.props;
-    const interpolations = markers.map((marker, index) => {
+    const interpolations = markers.map((_, index) => {
       const inputRange = [
         (index - 1) * (CARD_WIDTH + CARD_LEFT_RIGHT_MARGIN),
         index * (CARD_WIDTH + CARD_LEFT_RIGHT_MARGIN),
@@ -91,6 +100,7 @@ export default class StoresMap extends React.PureComponent {
           ref={map => this.map = map}
           style={styles.container}
           initialRegion={region}
+          onMapReady={() => this.setState({ isReady: true })}
           showsUserLocation
           showsMyLocationButton
         >
@@ -99,18 +109,22 @@ export default class StoresMap extends React.PureComponent {
               opacity: interpolations[index].opacity,
             };
             const pinColor = marker.isOnline ? 'green' : 'red';
-            const { address } = marker;
+            const {
+              coordinate,
+              name,
+              email: description,
+            } = marker;
             return (
               <MapView.Marker.Animated
                 key={index}
                 style={opacityStyle}
-                title={marker.name}
-                description={marker.description}
-                coordinate={address}
+                title={name}
+                description={description}
+                coordinate={coordinate}
                 tracksViewChanges={false}
                 pinColor={pinColor}
                 onPress={() => {
-                  this.map.animateToCoordinate(marker.address);
+                  this.map.animateCamera({ center: coordinate }, 350);
                   this.list.getNode().scrollTo({ x: (index * (CARD_WIDTH + CARD_LEFT_RIGHT_MARGIN)) });
                 }}
               />
@@ -138,20 +152,22 @@ export default class StoresMap extends React.PureComponent {
           style={styles.scrollView}
           contentContainerStyle={styles.endPadding}
         >
-          {markers.map((marker, index) => (
+          { markers.map((marker, index) => {
+            const { coordinate, images, email } = marker;
+            return (
             <TouchableWithoutFeedback
               key={index}
               onPress={() => {
                 if (this.index === index) this.props.navigation.navigate('StoreDetails', { store: { ...marker, index } });
-                this.map.animateToCoordinate(marker.address);
+                this.map.animateCamera({ center: coordinate }, 350);
                 this.list.getNode().scrollTo({ x: (index * (CARD_WIDTH + CARD_LEFT_RIGHT_MARGIN)) });
               }}
             >
             <Animated.View style={[styles.card, { opacity: interpolations[index].opacity }]}>
               <MagicMove.Image
                 id={`image-${index}`}
-                transition={MagicMove.Transition.squashAndStretch}
-                source={{ uri: marker.logo }}
+                transition={MagicMove.Transition.move}
+                source={{ uri: images.length > 0 ? images[0].url : imageNotFound }}
                 style={styles.cardImage}
                 resizeMode="cover"
                 useNativeDriver={false}
@@ -159,21 +175,31 @@ export default class StoresMap extends React.PureComponent {
               <View style={styles.textContent}>
                 <Text numberOfLines={1} style={styles.cardtitle}>{marker.name}</Text>
                 <Text numberOfLines={1} style={styles.cardDescription}>
-                  {marker.description}
+                  {email}
                 </Text>
               </View>
             </Animated.View>
             </TouchableWithoutFeedback>
-          ))}
+          )})}
         </Animated.ScrollView>
       </>
     );
   }
 }
 
+const mapStyle = Platform.select({
+  ios: {
+    flex: 1
+  },
+  android: {
+    width,
+    height,
+  }
+});
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    ...mapStyle,
   },
   scrollView: {
     position: "absolute",

@@ -6,15 +6,14 @@ export const STORES_BY_DISTANCE = gql`
     $longitude: Float!,
     $distance: Float
   ) {
-    stores(
+    storesByDistance(
       latitude: $latitude,
       longitude: $longitude,
       distance: $distance
     ) {
       id
       name
-      description
-      logo
+      document
       email
       address {
         id
@@ -24,12 +23,18 @@ export const STORES_BY_DISTANCE = gql`
         street
         number
         complement
+      }
+      coordinate {
         latitude
         longitude
       }
       owner {
         name
         email
+      }
+      images {
+        url
+        sequence
       }
     }
   }

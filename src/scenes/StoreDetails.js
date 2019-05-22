@@ -3,11 +3,11 @@ import {
   Text,
   View,
   Image,
-  Dimensions,
 } from 'react-native';
 import * as MagicMove from 'react-native-magic-move';
 import { FlatList } from 'react-native-gesture-handler';
 import { produtos } from '../../mocks';
+import { imageNotFound } from '../styles/theme';
 
 const IMAGE_SIZE = 150;
 
@@ -67,7 +67,6 @@ class StoreDetails extends React.PureComponent {
 
   render() {
     const { store } = this.props.navigation.state.params;
-    console.log('Store: ', store);
     const products = this.generateProducts(produtos);
     return (
       <MagicMove.Scene style={{ flex: 1 }}>
@@ -82,8 +81,8 @@ class StoreDetails extends React.PureComponent {
             width: IMAGE_SIZE,
             height: IMAGE_SIZE,
           }}
-          transition={MagicMove.Transition.morph}
-          source={{ uri: store.logo }}
+          transition={MagicMove.Transition.move}
+          source={{ uri: store.images.length > 0 ? store.images[0].url : imageNotFound}}
           resizeMode={'cover'}
           useNativeDriver={false}
         />
